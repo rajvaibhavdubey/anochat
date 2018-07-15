@@ -199,3 +199,8 @@ aside .sidebar_controls .right{
             height: 40px;
             width: 40px;
         }
+.chat-name{
+  font-size: 17px;
+  font-weight: 600;
+  color: #4aa1f3;
+}
