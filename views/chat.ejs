@@ -1,72 +1,81 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Chat Room</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/chat.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-    
+
 </head>
+
 <body>
-  <aside class="sidebar">
-      <div class="sidebar-main">
-          <header>
-              <h1 class="logo">
-                  AnoChat
-              </h1>
-          </header>
-          <form id="login">
-              <label>
-                  <div>Nickname</div>
-                  <input id="login_nick" type="text" required="true" > <!-- after connected readonly="true" -->
-              </label>
-              <button id="login-button">Connect</button>
-          </form>
-          <div class="separator"></div>
-          <div class="userlist showonlogin">
-              <h2>Online Users</h2>
-              <ol class="userslist">
-                  <!-- <li>s of users -->
-              </ol>
-          </div>
-      </div>
-      <div class="sidebar_controls showonlogin">
-          <div class="left">
+    <aside class="sidebar">
+        <div class="sidebar-main">
+            <header>
+                <h1 class="logo">
+                    AnoChat
+                </h1>
+            </header>
+            <form id="login">
+                <label>
+                    <div>Nickname</div>
+                    <input id="login_nick" type="text" required="true">
+                    <!-- after connected readonly="true" -->
+                </label>
+                <button id="login-button">Connect</button>
+            </form>
+            <div class="separator"></div>
+            <div class="userlist showonlogin">
+                <h2>Online Users</h2>
+                <ol class="userslist">
+                    <!-- <li>s of users -->
+                </ol>
+            </div>
+        </div>
+        <div class="sidebar_controls showonlogin">
+            <div class="left">
                 <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-log-out"></span>
+                        <a href="/logout" >
+
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
                 </button>
-          </div>
-          <div class="right">
+            </div>
+            <div class="right">
                 <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-menu-left"></span>
+
+                    <span class="glyphicon glyphicon-menu-left"></span>
+
                 </button>
-          </div>
-      </div>
-  </aside>
-  <div class="messages showonlogin">
-      <div class="sendbar">
-          <div class="sendbar_attach">
+            </div>
+        </div>
+    </aside>
+    <div class="messages showonlogin">
+        <div class="sendbar">
+            <div class="sendbar_attach">
                 <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-paperclip"></span>
+                    <span class="glyphicon glyphicon-paperclip"></span>
                 </button>
-                
+
                 <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-camera"></span>
+                    <span class="glyphicon glyphicon-camera"></span>
                 </button>
-                
+
                 <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-facetime-video"></span>
+                    <span class="glyphicon glyphicon-facetime-video"></span>
                 </button>
-                
-          </div>
-          <div class="sendbar_compose">
-              <div contenteditable="true" placeholder="Type your message..." class="sendbar_compose_input">
-                  
-              </div>
-          </div>
-          
-      </div>
-  </div> 
+
+            </div>
+            <div class="sendbar_compose">
+                <input type="textarea" contenteditable="true" placeholder="Type your message..." class="sendbar_compose_input">
+
+                </input>
+            </div>
+
+        </div>
+    </div>
 </body>
