@@ -76,6 +76,9 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const socketIO = require('socket.io');
+const {Global} = require('./helpers/Global');
+const {Users}= require('./helpers/UsersClass');
+
 
 container.resolve(function (users, _) {
 
@@ -87,10 +90,15 @@ container.resolve(function (users, _) {
     function SetupExpress() {
         const app = express();
         const server = http.createServer(app);
+        const io = socketIO(server);
+
         server.listen(process.env.PORT || 3000, function () {
             console.log("Server started on port 3000!!!");
         });
         ConfigureExpress(app);
+
+        require('./socket/globalroom')(io,Global,_);
+        require('./socket/groupchat')(io,Users,_);
 
         //Setup Router
         const router = require('express-promise-router')();

@@ -5,9 +5,9 @@
     <title>Chat Room</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/chat.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
 </head>
@@ -21,27 +21,35 @@
                 </h1>
             </header>
             <form id="login">
-                <label>
-                    <div>Nickname</div>
-                    <input id="login_nick" type="text" required="true">
-                    <!-- after connected readonly="true" -->
-                </label>
-                <button id="login-button">Connect</button>
+                <div>
+                    <%= user.username %>
+                </div>
+                <!-- after connected readonly="true" -->
             </form>
+            <input type="hidden" id="name-user" value="<%=user.username%>">
+            <input type="hidden" id="name-image" value="<%=user.userImage%>">
+
+            <input type="hidden" id="groupName" value="universal">
+            <input type="hidden" name="sender" id="sender" value="<%=user.fullname || user.username%>">
             <div class="separator"></div>
-            <div class="userlist showonlogin">
-                <h2>Online Users</h2>
-                <ol class="userslist">
-                    <!-- <li>s of users -->
-                </ol>
+            <div class="userlist showonlogin new_message_head">
+                <div class="pull-left">
+                    <h2>Online Users&nbsp;
+                        <span id="numValue"></span>
+                    </h2>
+                    <div class="col-md-12" id="main">
+                        <div id="users" style="text-decoration: none"></div>
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sidebar_controls showonlogin">
             <div class="left">
                 <button type="button" class="btn btn-default btn-lg">
-                        <a href="/logout" >
+                    <a href="/logout">
 
-                    <span class="glyphicon glyphicon-log-out"></span>
+                        <span class="glyphicon glyphicon-log-out"></span>
                     </a>
                 </button>
             </div>
@@ -55,27 +63,74 @@
         </div>
     </aside>
     <div class="messages showonlogin">
-        <div class="sendbar">
-            <div class="sendbar_attach">
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-paperclip"></span>
-                </button>
+        <div class="chat_area">
+            <ul id="messages" class="list-unstyled">
+                <!-- <li class="left">
+                    <span class="chat-img1 pull-left">
+                        <img src="http://placehold.it/300x300" class="img-circle"  >
+                    </span>
+                    <div class="chat-body1">
+                        <span class="chat-name">Username</span>
+                        <br>
+                        Message Body
+                    </div>
+                </li> -->
+            </ul>
 
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-camera"></span>
-                </button>
-
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-facetime-video"></span>
-                </button>
-
-            </div>
-            <div class="sendbar_compose">
-                <input type="textarea" contenteditable="true" placeholder="Type your message..." class="sendbar_compose_input">
-
-                </input>
-            </div>
+            <script id="message-template" type="text/template">
+                <li class="left">
+                    <span class="chat-img1 pull-left">
+                        <img src="http://placehold.it/300x300" class="img-circle"  >
+                    </span>
+                    <div class="chat-body1" style="color: black;">
+                        <span class="chat-name">{{ sender }}</span>
+                        <br>
+                        {{ text }}
+                    </div>
+                    <br>
+                </li>
+            </script>
 
         </div>
+
+
+
     </div>
+    </div>
+    <div class="sendbar">
+            <form id="message-form" method="post">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9">
+                        <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <button id="send-message" class="btn btn-default" style="background: #4aa1f3; border: #4aa1f3; ">
+                            Send
+                        </button>
+                        <!-- Enter to submit -->
+                        <script>
+                            var input = document.getElementById("message-form");
+                            input.addEventListener("keyup", function (event) {
+                                event.preventDefault();
+                                if (event.keyCode === 13) {
+                                    document.getElementById("send-message").click();
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+    </div>
+    </form>
+    </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/group/groupchat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+
 </body>

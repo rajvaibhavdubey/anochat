@@ -8,7 +8,9 @@ const simpleDependancies = [
     ['mongoose','mongoose'],
     ['passport','passport'],    //A Node.js module for login authentication vagaira vagaira.
     ['formidable','formidable'], //A Node.js module for parsing form data, especially file uploads.
-    ['async','async']
+    ['async','async'], 
+    ['Users', './models/user']
+
 ];
 
 simpleDependancies.forEach(function(val){
