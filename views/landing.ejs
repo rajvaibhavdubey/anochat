@@ -8,15 +8,7 @@
     <script src="/js/landing.js"></script>
     <link rel="stylesheet" href="/stylesheets/landing.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-            $(document).ready(function(){
-                $(".login-button").hide();
-                $("#show").on("click",function(){
-                    $(".login-wrap").show();
-                    $(".login-button").hide();
-                });
-            });
-            </script>
+   
 
 </head>
 
@@ -28,13 +20,13 @@
     </div>
 
 
-    <div id="login-button">
-        <a href="#" id="show">
-            <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
-        </a>
-    </div>
-
-    <div class="login-wrap" style="display: none">
+    <!--<div id="login-button">-->
+    <!--    <a href="#" id="show">-->
+    <!--        <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">-->
+    <!--    </a>-->
+    <!--</div>-->
+    
+    <div class="login-wrap">
         <div class="login-html">
             <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
             <label for="tab-1" class="tab">Sign In</label>
@@ -81,8 +73,7 @@
                         <div class="hr"></div>
 
                         <div class="foot-lnk">
-                            <label for="tab-1"></label>
-                            <a>Already Member?</a>
+                            <label for="tab-1" id="toggle">Already Member?</label>
                         </div>
                     </div>
                 </form>
