@@ -4,12 +4,11 @@
 <head>
     <title>Chat Room</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/stylesheets/chat.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/chat.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -54,10 +53,13 @@
                 </button>
             </div>
             <div class="right">
-                <button type="button" class="btn btn-default btn-lg">
-
-                    <span class="glyphicon glyphicon-menu-left"></span>
-
+                <button type="button" id="sidebar_collapse" class="btn btn-default btn-lg">
+                     <span class="glyphicon glyphicon-menu-left"></span>
+                     <script>
+                         $( "button" ).click(function() {
+                            $( "span" ).toggleClass( "glyphicon glyphicon-menu-left glyphicon glyphicon-menu-right" );
+                        });
+                     </script>
                 </button>
             </div>
         </div>
@@ -125,10 +127,11 @@
     </div>
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
     <script src="/js/global.js"></script>
     <script src="/js/group/groupchat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>

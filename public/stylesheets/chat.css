@@ -135,6 +135,24 @@ aside .sidebar_controls button{
   margin:10px;
 }
 
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: none;
+}
+
+.sidebarhidden aside {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%); }
+  .sidebarhidden aside .sidebar_controls {
+    -webkit-transform: translateX(70px);
+    transform: translateX(70px); }
+
+.sidebarhidden .messages {
+  width: 100%; }
+
+.sidebarhidden .sendbar {
+  width: calc(100% - 70px); }
+
+
 aside .sidebar_controls .right{
   float: right;
 }
