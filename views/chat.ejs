@@ -54,10 +54,10 @@
             </div>
             <div class="right">
                 <button type="button" id="sidebar_collapse" class="btn btn-default btn-lg">
-                     <span class="glyphicon glyphicon-menu-left"></span>
+                     <span id="sidebar_toggle" class="glyphicon glyphicon-menu-left"></span>
                      <script>
                          $( "button" ).click(function() {
-                            $( "span" ).toggleClass( "glyphicon glyphicon-menu-left glyphicon glyphicon-menu-right" );
+                            $( "#sidebar_toggle" ).toggleClass( "glyphicon glyphicon-menu-left glyphicon glyphicon-menu-right" );
                         });
                      </script>
                 </button>
